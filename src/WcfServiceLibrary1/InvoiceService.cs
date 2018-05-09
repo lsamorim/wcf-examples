@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ServiceModel;
+using System.Threading;
 
 namespace WcfServiceLibrary1
 {
@@ -28,8 +30,14 @@ namespace WcfServiceLibrary1
             }
         };
 
-        public void SubmitInvocie(Invoice invoice)
+        public void SubmitInvoice(Invoice invoice)
         {
+            if (invoice.CustomerId.Contains("fault"))
+                throw new FaultException("Error within SubmitInvoice");
+
+            if (invoice.CustomerId.Contains("timeout"))
+                Thread.Sleep(TimeSpan.FromSeconds(120));
+
             invoices.Add(invoice);
         }
 

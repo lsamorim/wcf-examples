@@ -11,7 +11,7 @@ namespace WcfServiceLibrary1
     public interface IInvoiceService
     {
         [OperationContract]
-        void SubmitInvocie(Invoice invoice);
+        void SubmitInvoice(Invoice invoice);
 
         [OperationContract]
         int GetStatus(Invoice invoice);

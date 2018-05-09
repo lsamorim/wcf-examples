@@ -96,7 +96,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_IInvoiceService_SubmitInvocie_Input_policy">
+  <wsp:Policy wsu:Id="WSHttpBinding_IInvoiceService_SubmitInvoice_Input_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -115,7 +115,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_IInvoiceService_SubmitInvocie_output_policy">
+  <wsp:Policy wsu:Id="WSHttpBinding_IInvoiceService_SubmitInvoice_output_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -267,16 +267,16 @@
   </wsp:Policy>
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
-      <xsd:import schemaLocation="" namespace="http://tempuri.org/" />
-      <xsd:import schemaLocation="" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-      <xsd:import schemaLocation="" namespace="http://schemas.datacontract.org/2004/07/WcfServiceLibrary1" />
+      <xsd:import namespace="http://tempuri.org/" />
+      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/WcfServiceLibrary1" />
     </xsd:schema>
   </wsdl:types>
-  <wsdl:message name="IInvoiceService_SubmitInvocie_InputMessage">
-    <wsdl:part name="parameters" element="tns:SubmitInvocie" />
+  <wsdl:message name="IInvoiceService_SubmitInvoice_InputMessage">
+    <wsdl:part name="parameters" element="tns:SubmitInvoice" />
   </wsdl:message>
-  <wsdl:message name="IInvoiceService_SubmitInvocie_OutputMessage">
-    <wsdl:part name="parameters" element="tns:SubmitInvocieResponse" />
+  <wsdl:message name="IInvoiceService_SubmitInvoice_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SubmitInvoiceResponse" />
   </wsdl:message>
   <wsdl:message name="IInvoiceService_GetStatus_InputMessage">
     <wsdl:part name="parameters" element="tns:GetStatus" />
@@ -291,9 +291,9 @@
     <wsdl:part name="parameters" element="tns:GetInvoicesResponse" />
   </wsdl:message>
   <wsdl:portType name="IInvoiceService">
-    <wsdl:operation name="SubmitInvocie">
-      <wsdl:input wsaw:Action="http://tempuri.org/IInvoiceService/SubmitInvocie" message="tns:IInvoiceService_SubmitInvocie_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IInvoiceService/SubmitInvocieResponse" message="tns:IInvoiceService_SubmitInvocie_OutputMessage" />
+    <wsdl:operation name="SubmitInvoice">
+      <wsdl:input wsaw:Action="http://tempuri.org/IInvoiceService/SubmitInvoice" message="tns:IInvoiceService_SubmitInvoice_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IInvoiceService/SubmitInvoiceResponse" message="tns:IInvoiceService_SubmitInvoice_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetStatus">
       <wsdl:input wsaw:Action="http://tempuri.org/IInvoiceService/GetStatus" message="tns:IInvoiceService_GetStatus_InputMessage" />
@@ -306,8 +306,8 @@
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IInvoiceService" type="tns:IInvoiceService">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="SubmitInvocie">
-      <soap:operation soapAction="http://tempuri.org/IInvoiceService/SubmitInvocie" style="document" />
+    <wsdl:operation name="SubmitInvoice">
+      <soap:operation soapAction="http://tempuri.org/IInvoiceService/SubmitInvoice" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -337,14 +337,14 @@
   <wsdl:binding name="WSHttpBinding_IInvoiceService" type="tns:IInvoiceService">
     <wsp:PolicyReference URI="#WSHttpBinding_IInvoiceService_policy" />
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="SubmitInvocie">
-      <soap12:operation soapAction="http://tempuri.org/IInvoiceService/SubmitInvocie" style="document" />
+    <wsdl:operation name="SubmitInvoice">
+      <soap12:operation soapAction="http://tempuri.org/IInvoiceService/SubmitInvoice" style="document" />
       <wsdl:input>
-        <wsp:PolicyReference URI="#WSHttpBinding_IInvoiceService_SubmitInvocie_Input_policy" />
+        <wsp:PolicyReference URI="#WSHttpBinding_IInvoiceService_SubmitInvoice_Input_policy" />
         <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <wsp:PolicyReference URI="#WSHttpBinding_IInvoiceService_SubmitInvocie_output_policy" />
+        <wsp:PolicyReference URI="#WSHttpBinding_IInvoiceService_SubmitInvoice_output_policy" />
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
@@ -374,8 +374,8 @@
   <wsdl:binding name="NetTcpBinding_IInvoiceService" type="tns:IInvoiceService">
     <wsp:PolicyReference URI="#NetTcpBinding_IInvoiceService_policy" />
     <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
-    <wsdl:operation name="SubmitInvocie">
-      <soap12:operation soapAction="http://tempuri.org/IInvoiceService/SubmitInvocie" style="document" />
+    <wsdl:operation name="SubmitInvoice">
+      <soap12:operation soapAction="http://tempuri.org/IInvoiceService/SubmitInvoice" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -405,8 +405,8 @@
   <wsdl:binding name="BasicHttpBinding_IInvoiceService1" type="tns:IInvoiceService">
     <wsp:PolicyReference URI="#BasicHttpBinding_IInvoiceService1_policy" />
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="SubmitInvocie">
-      <soap:operation soapAction="http://tempuri.org/IInvoiceService/SubmitInvocie" style="document" />
+    <wsdl:operation name="SubmitInvoice">
+      <soap:operation soapAction="http://tempuri.org/IInvoiceService/SubmitInvoice" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

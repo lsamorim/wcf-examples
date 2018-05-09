@@ -78,11 +78,11 @@ namespace ClientOfConsoleHostUseClient.InvoiceServiceReference {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="InvoiceServiceReference.IInvoiceService")]
     public interface IInvoiceService {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IInvoiceService/SubmitInvocie", ReplyAction="http://tempuri.org/IInvoiceService/SubmitInvocieResponse")]
-        void SubmitInvocie(ClientOfConsoleHostUseClient.InvoiceServiceReference.Invoice invoice);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IInvoiceService/SubmitInvoice", ReplyAction="http://tempuri.org/IInvoiceService/SubmitInvoiceResponse")]
+        void SubmitInvoice(ClientOfConsoleHostUseClient.InvoiceServiceReference.Invoice invoice);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IInvoiceService/SubmitInvocie", ReplyAction="http://tempuri.org/IInvoiceService/SubmitInvocieResponse")]
-        System.Threading.Tasks.Task SubmitInvocieAsync(ClientOfConsoleHostUseClient.InvoiceServiceReference.Invoice invoice);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IInvoiceService/SubmitInvoice", ReplyAction="http://tempuri.org/IInvoiceService/SubmitInvoiceResponse")]
+        System.Threading.Tasks.Task SubmitInvoiceAsync(ClientOfConsoleHostUseClient.InvoiceServiceReference.Invoice invoice);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IInvoiceService/GetStatus", ReplyAction="http://tempuri.org/IInvoiceService/GetStatusResponse")]
         int GetStatus(ClientOfConsoleHostUseClient.InvoiceServiceReference.Invoice invoice);
@@ -124,12 +124,12 @@ namespace ClientOfConsoleHostUseClient.InvoiceServiceReference {
                 base(binding, remoteAddress) {
         }
         
-        public void SubmitInvocie(ClientOfConsoleHostUseClient.InvoiceServiceReference.Invoice invoice) {
-            base.Channel.SubmitInvocie(invoice);
+        public void SubmitInvoice(ClientOfConsoleHostUseClient.InvoiceServiceReference.Invoice invoice) {
+            base.Channel.SubmitInvoice(invoice);
         }
         
-        public System.Threading.Tasks.Task SubmitInvocieAsync(ClientOfConsoleHostUseClient.InvoiceServiceReference.Invoice invoice) {
-            return base.Channel.SubmitInvocieAsync(invoice);
+        public System.Threading.Tasks.Task SubmitInvoiceAsync(ClientOfConsoleHostUseClient.InvoiceServiceReference.Invoice invoice) {
+            return base.Channel.SubmitInvoiceAsync(invoice);
         }
         
         public int GetStatus(ClientOfConsoleHostUseClient.InvoiceServiceReference.Invoice invoice) {

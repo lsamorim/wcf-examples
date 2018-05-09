@@ -1,5 +1,6 @@
 ﻿using ClientOfConsoleHostUseClient.InvoiceServiceReference;
 using System;
+using System.ServiceModel;
 
 namespace ClientOfConsoleHostUseClient
 {
@@ -14,31 +15,49 @@ namespace ClientOfConsoleHostUseClient
 
         private static async void Execute()
         {
-            var client = new InvoiceServiceClient("WSHttpBinding_IInvoiceService");
-            
-            var invoice = new Invoice
+            var client = new InvoiceServiceClient("NetTcp_IInvoiceService");
+
+            try
             {
-                CustomerId = Guid.NewGuid().ToString(),
-                InvoiceDate = DateTime.Now.AddHours(-1)
-            };
+                var invoice = new Invoice
+                {
+                    CustomerId = "fault" + Guid.NewGuid().ToString(),
+                    InvoiceDate = DateTime.Now.AddHours(-1)
+                };
 
-            var invoice2 = new Invoice
-            {
-                CustomerId = Guid.NewGuid().ToString(),
-                InvoiceDate = DateTime.Now
-            };
+                var invoice2 = new Invoice
+                {
+                    CustomerId = Guid.NewGuid().ToString(),
+                    InvoiceDate = DateTime.Now
+                };
 
-            await client.SubmitInvocieAsync(invoice);
-            await client.SubmitInvocieAsync(invoice2);
+                await client.SubmitInvoiceAsync(invoice);
+                await client.SubmitInvoiceAsync(invoice2);
 
-            var response = await client.GetInvoicesAsync();
+                var response = await client.GetInvoicesAsync();
 
-            foreach (var inv in response)
-            {
-                Console.WriteLine(inv.CustomerId);
+                foreach (var inv in response)
+                {
+                    Console.WriteLine(inv.CustomerId);
+                }
+
+                client.Close();
             }
-
-            client.Close();
+            catch(FaultException fe)
+            {
+                Console.WriteLine($"FaultException: {fe.GetType()}");
+                client.Abort();
+            }
+            catch(CommunicationException ce)
+            {
+                Console.WriteLine($"FaultException: {ce.GetType()}");
+                client.Abort();
+            }
+            catch(TimeoutException te)
+            {
+                Console.WriteLine($"FaultException: {te.GetType()}");
+                client.Abort();
+            }
         }
     }
 }
